@@ -40,10 +40,10 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             return redirect('home')
-        else:
+        elif user is None:
             return render(request, 'writers/login.html', {'error':'Username or passowrd is incorrect!'})
     else:
-        return render(request, 'writers/login.html')
+        return render(request, 'writers/login.html', {'approval_error': 'Your Account is not yet Approved!'})
 
 def logout(request):
         auth.logout(request)

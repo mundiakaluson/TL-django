@@ -37,9 +37,14 @@
 </style>
     <br>
 
-{% if error %}
+{% if user.is_authenticated %}
+
+    <p style="color: green;">Login Successful.</p>
+
+{% elif error %}
     <p style="color: red;">{{ error }}</p>
 {% endif %}
+    
 <div class="container">
     
     <body class="text-center">

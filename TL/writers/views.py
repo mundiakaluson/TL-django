@@ -45,5 +45,5 @@ def login(request):
         return render(request, 'writers/login.html')
 
 def logout(request):
-    auth.logout(request)
-    return redirect('home')
+        auth.logout(request)
+        return redirect('home')

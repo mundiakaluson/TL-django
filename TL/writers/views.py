@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
 
@@ -44,6 +44,10 @@ def login(request):
             return render(request, 'writers/login.html', {'error':'Username or passowrd is incorrect!'})
     else:
         return render(request, 'writers/login.html', {'approval_error': 'Your Account is not yet Approved!'})
+
+def username(request, username):
+    username = get_object_or_404(User, pk=username)
+    return render(request, 'writers/login.html', {'username': username})
 
 def logout(request):
         auth.logout(request)

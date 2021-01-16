@@ -36,20 +36,27 @@
 }
 </style>
     <br>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
 <div class="container">
     
     <body class="text-center">
     
         <div class="cointainer">
         <main class="form-signin">
-          <form action="{% url 'register' %}" method="POST">
-              {% csrf_token %}
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
             <img class="mb-4" src="{% static 'logo.png' %}" alt="" width="70" height="70">
             <h1 class="h4 mb-3 fw-normal">Log back in</h1>
             <input type="text" class="form-control" placeholder="Username" name="username" required >
             <br>
             <input type="password" class="form-control" placeholder="Password" name="password" required>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Log In</button>
+            <br>
+            <br>
+            <p class="font-weight-light">Not a Member? <a href="{% url 'register' %}">Work With Us!</a></p>
             <p class="mt-5 mb-3 text-muted">Tutoring Learners &copy; {% now 'Y' %}</p>
           </form>
         </main>

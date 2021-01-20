@@ -11,9 +11,19 @@ class Order(models.Model):
         ('PHD', 'PHD')
     )
 
+    LANGUAGE = (
+
+        ('English UK', 'English UK'),
+        ('English US', 'English US'),
+        ('English CA', 'English CA'),
+        ('English AU', 'English AU'),
+        ('Other', 'Other')
+    )
+
     words = models.CharField(max_length=32)
     level = models.CharField(max_length=32,
                             choices=LEVEL,
                             default='College'
                             )
+    language
 

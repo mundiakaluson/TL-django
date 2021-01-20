@@ -1,3 +1,13 @@
 from django.db import models
 
-# Create your models here.
+class Order(models.Model):
+
+    SCHOOL = 'school'
+    COLLEGE = 'college'
+    UNIVERSITY = 'university'
+    MASTERS = 'masters'
+    PHD = 'phd'
+
+    words = models.CharField(max_length=32)
+    level = models.CharField(max_length=32)
+

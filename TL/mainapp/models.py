@@ -1,6 +1,6 @@
 from django.db import models
-from django.utils import timezone
-
+from django.contrib.auth.models import User
+from django.db.models.deletion import CASCADE
 class Order(models.Model):
 
     LEVEL = (
@@ -48,14 +48,16 @@ class Order(models.Model):
 
     level = models.CharField(max_length=32,
                             choices=LEVEL,
-                            default='College'
+                            default='College',
+                            help_text='The educational level of the paper'
                             )
     language = models.CharField(max_length=32,
                                 choices=LANGUAGE,
-                                default='English US'
+                                default='English US',
+                                help_text='Preferred English version of the client'
                                 )
 
-    deadline = models.DateTimeField(blank=True, null=True)
+    deadline = models.DateTimeField(blank=True, null=True, help_text='Precise deadline of the assignment')
 
     topic = models.CharField(max_length=256, default="", help_text="Topic of the assignment")
 
@@ -63,12 +65,14 @@ class Order(models.Model):
 
     sources = models.CharField(max_length=16,
                                 choices=SOURCES,
-                                default="1"
+                                default="1",
+                                help_text="Amount of sources needed by the client. Put 'Other' if exceeds eight."
                                 )
 
     style = models.CharField(max_length=64,
                             choices=STYLE,
-                            default='APA'
+                            default='APA',
+                            help_text='Preferred formatting style by the client.'
                             )
 
     description = models.TextField(default="", help_text="Assignment Descritption")
@@ -76,6 +80,12 @@ class Order(models.Model):
     uploads = models.FileField(default="", help_text='File uploads for the assignment')
 
     price = models.IntegerField(default='2.50', help_text='Total payment of the assignment')
+
+    writer = models.ForeignKey(User, 
+                                on_delete=CASCADE, 
+                                blank=True, 
+                                null=True, 
+                                help_text='Writer to undertake the assignment.')
 
     def __str__(self) -> str:
         return self.topic

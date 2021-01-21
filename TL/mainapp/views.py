@@ -12,3 +12,4 @@ def about(request):
 @login_required
 def orders(reqeust):
     return render(reqeust, 'mainapp/orders.html', {"title": title})
+    

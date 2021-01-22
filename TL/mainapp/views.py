@@ -13,3 +13,4 @@ def about(request):
 def orders(reqeust):
     return render(reqeust, 'mainapp/orders.html', {"title": title})
     
+    

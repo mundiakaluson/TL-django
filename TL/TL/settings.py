@@ -32,9 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'suit',
     'djmoney',
-    'TL.apps.suitConfig',
     'mainapp.apps.MainappConfig',
     'writers.apps.WritersConfig',
     'django.contrib.admin',
@@ -44,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

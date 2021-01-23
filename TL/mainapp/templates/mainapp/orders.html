@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load currency %}
 
 {% block content %}
 
@@ -68,7 +67,7 @@
 
                                 <br>
                                 <span class="badge badge-info" >
-                                     Price: {{ order.price|currency:"USD" }}
+                                     Price: {{ order.price }}
                                 </span>
                                 
                             </div>

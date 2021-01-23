@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
+from djmoney.models.fields import MoneyField
 class Order(models.Model):
 
     LEVEL = (
@@ -79,7 +80,7 @@ class Order(models.Model):
 
     uploads = models.FileField(default="", help_text='File uploads for the assignment', blank=True, null=True, upload_to='uploads/')
 
-    price = models.IntegerField(default='2.50', help_text='Total payment of the assignment')
+    price = MoneyField(decimal_places=2, max_digits=19, default_currency='USD', help_text='Total payment of the assignment')
 
     writer = models.ForeignKey(User, 
                                 on_delete=CASCADE, 

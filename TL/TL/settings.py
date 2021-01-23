@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'currencies',
     'mainapp.apps.MainappConfig',
     'writers.apps.WritersConfig',
     'django.contrib.admin',

@@ -77,7 +77,7 @@ class Order(models.Model):
 
     description = models.TextField(default="", help_text="Assignment Descritption")
 
-    uploads = models.FileField(default="", help_text='File uploads for the assignment', blank=True, null=True)
+    uploads = models.FileField(default="", help_text='File uploads for the assignment', blank=True, null=True, upload_to='uploads/')
 
     price = models.IntegerField(default='2.50', help_text='Total payment of the assignment')
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .models import Order
 
 title = "Tutoring Learners"
 
@@ -11,6 +12,11 @@ def about(request):
 
 @login_required
 def orders(reqeust):
-    return render(reqeust, 'mainapp/orders.html', {"title": title})
+    #TODO: Render webpage to show orders after designing!
+
+    orders = Order.objects
+    
+
+    return render(reqeust, 'mainapp/orders.html', {"title": title, "orders": orders})
     
     

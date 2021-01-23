@@ -10,28 +10,32 @@
     <div class="container-fluid bg-dark text-light rounded">
         <br>
         <div class="row">
+            
+            {% for order in orders.all %}
+                
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-12">
                                 <h3>
-                                    Order Topic
+                                    {{ order.topic }}
                                 </h3>
                                 <p class="text-light font-light">
-                                    Order Description
+                                    <p>Description</p>
+                                    <br>
+                                    {{ order.description }}
                                 </p>
-                                <br>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <span class="badge badge-light">Label</span>
+                                        <span class="badge badge-light">Words: {{ order.words }}</span>
                                     </div>
                                     <div class="col-md-4">
-                                        <span class="badge badge-light">Label</span>
+                                        <span class="badge badge-light">Writing Level: {{ order.level }}</span>
                                     </div>
                                     <div class="col-md-4">
-                                        <span class="badge badge-light">Label</span>
+                                        <span class="badge badge-light">Language: {{ order.language }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -40,41 +44,38 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="badge badge-light">Label</span>
+                                <span class="badge badge-light">Deadline: {{ order.deadline }}</span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8">
-
-                                <br>
-                                
-                                <button type="button" class="btn btn-light" disabled>
-                                    Button
-                                </button>
-
-                                <button type="button" class="btn btn-light" disabled>
-                                    Button
-                                </button>
-                            </div>
                             <div class="col-md-6">
-
-                                <br>
-                                <br>
+                                <span class="badge badge-light">
+                                    Subject: {{ order.subject }}
+                                </span>
                                 
-                                <button type="button" class="btn btn-warning" disabled>
-                                    Button
-                                </button>
-
-                                <button type="button" class="btn btn-warning" disabled>
-                                    Button
-                                </button>
+                                <span class="badge badge-light">
+                                    Sources Needed: {{ order.sources }}
+                                </span>
                             </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-12">
+
+                                <span class="badge badge-warning">
+                                    Writing: Style: {{ order.style }}
+                                </span>
+
+                                <br>
+                                <span class="badge badge-warning" disabled>
+                                     Price: ${{ order.price }}
+                                </span>
+                                
+                            </div>
+                            <br>
                             <br>
                             <br>
                             <div class="col-4 align-items-end">
-                                <br>
-
-                                <button type="button" class="btn btn-success" >
+                                <button type="button" class="btn btn-sm btn-success" >
                                     Bid Order
                                 </button>
                         </div>
@@ -82,6 +83,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
         <br>
     </div>
     <br>

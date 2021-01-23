@@ -32,7 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'djmoney',
+    'TL.apps.suitConfig',
     'mainapp.apps.MainappConfig',
     'writers.apps.WritersConfig',
     'django.contrib.admin',
@@ -72,6 +74,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'TL.wsgi.application'
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Tutoring Learners Terminal',
+    'SHOW_REQUIRED_ASTERISK': True,
+    'CONFIRM_UNSAVED_CHANGES': True
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

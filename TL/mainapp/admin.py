@@ -7,4 +7,4 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ('topic', 'deadline', 'price')
 
 admin.site.register(models.Order, OrderAdmin)
-
+admin.site.site_header = 'Tutoring Learners Terminal'

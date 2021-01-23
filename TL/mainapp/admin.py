@@ -1,8 +1,9 @@
 from django.contrib import admin
 from . import models
 
-admin.site.register(models.Order)
+class OrderAdmin(admin.ModelAdmin):
 
-class OrdersAdmin(admin.ModelAdmin):
+    list_display = ('topic', 'style', 'words', 'level', 'deadline', 'price')
 
-    fields = ('topic', 'deadline')
+admin.site.register(models.Order, OrderAdmin)
+

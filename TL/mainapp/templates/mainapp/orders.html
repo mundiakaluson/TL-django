@@ -28,13 +28,13 @@
                                 </p>
                                 <br>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4    ">
                                         <span class="badge badge-light">Words: {{ order.words }}</span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <span class="badge badge-light">Writing Level: {{ order.level }}</span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md">
                                         <span class="badge badge-light">Language: {{ order.language }}</span>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="badge badge-light">Deadline: {{ order.deadline }}</span>
+                                <span class="badge badge-danger">Deadline: {{ order.deadline }}</span>
                             </div>
                         </div>
                         <div class="row">
@@ -53,6 +53,7 @@
                                     Subject: {{ order.subject }}
                                 </span>
                                 
+                                <br>
                                 <span class="badge badge-light">
                                     Sources Needed: {{ order.sources }}
                                 </span>
@@ -61,12 +62,12 @@
                             <br>
                             <div class="col-sm-12">
 
-                                <span class="badge badge-warning">
+                                <span class="badge badge-light">
                                     Writing: Style: {{ order.style }}
                                 </span>
 
                                 <br>
-                                <span class="badge badge-warning" disabled>
+                                <span class="badge badge-info" >
                                      Price: ${{ order.price }}
                                 </span>
                                 

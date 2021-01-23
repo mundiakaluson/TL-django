@@ -12,10 +12,10 @@ def about(request):
 
 @login_required
 def orders(reqeust):
-    #TODO: Render webpage to show orders after designing!
+    #TODO: Render webpage to show orders after designing! DONE!
 
     orders = Order.objects
-    
+
 
     return render(reqeust, 'mainapp/orders.html', {"title": title, "orders": orders})
     

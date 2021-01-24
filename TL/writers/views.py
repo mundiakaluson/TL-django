@@ -46,7 +46,13 @@ def login(request):
         elif user is None:
             return render(request, 'writers/login.html', {'error':'Username or passowrd is incorrect!'})
         elif user.is_active == False:
-            redirect('inactive')
+            return redirect('inactive')
+        elif user.is_authenticated == True:
+            return redirect('orders')
+
+        #TODO: Work on user authentication functionality
+        #TODO: this is suppose to return an inactive page if the user is not approved.
+        #TODO: It should also return the order section if the user is approved.
     else:
         return render(request, 'writers/login.html', {'approval_error': 'Your Account is not yet Approved!'})
 

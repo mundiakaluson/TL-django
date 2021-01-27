@@ -9,7 +9,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 class BidAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'user_bid', 'bid_selected')
+    list_display = ('id', 'user_bid', 'bid_order')
 
 admin.site.register(models.Order, OrderAdmin)
 admin.site.register(models.Bid, BidAdmin)

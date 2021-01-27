@@ -97,7 +97,7 @@ class Order(models.Model):
 class Bid(models.Model):
 
     user_bid = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    bid_selected = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
+    bid_order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
 
     """def __str__(self) -> str:
         return self.bid_selected"""

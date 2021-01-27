@@ -94,3 +94,11 @@ class Order(models.Model):
     def summary(self):
         return self.description[:100]
 
+class Bid(models.Model):
+
+    user_bid = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    bid_selected = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
+
+    """def __str__(self) -> str:
+        return self.bid_selected"""
+

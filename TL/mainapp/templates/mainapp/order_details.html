@@ -71,11 +71,17 @@
                             <br>
                             <br>
                             <br>
+                            <form action="{% url 'bid' %}" method="POST">
+                            {% csrf_token %}
                             <div class="col-4 align-items-end">
-                                <form action="#" method="GET">
-                                    {% csrf_token %}
-                                    <input type="submit" name="bid_order" value="Bid Order" class="btn btn-sm btn-success" >
-                                </form> 
+                                <input type="submit" name="bid_order" 
+                                value="Bid Order" class="btn btn-sm btn-success"
+                                data-toggle="modal" data-target="#myModal"
+                                onclick="location.href='{% url 'bid' %}';" >
+                            <input type="hidden" name="bid_selected">
+                                </div>
+                            </form>
+                                </div>
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,6 @@ urlpatterns = [
     path('writers/', include('writers.urls'), name='writers'),
     path('orders', views.orders, name='orders'),
     path('orders/order_details/<int:order_id>/', views.order_details, name='order_details'),
-    path('<int:order_details>/bid', views.bid, name='bid')
+    path('success', views.bid, name='bid'),
 
 ]

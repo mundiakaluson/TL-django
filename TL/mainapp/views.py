@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Order
+from .models import Order, Bid
 
 title = "Tutoring Learners"
 
@@ -21,12 +21,18 @@ def order_details(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     return render(request, 'mainapp/order_details.html', {'order': order})
 
-def bid(request, order_id):
-    order = get_object_or_404(Order, pk=order_id)
+def bid(request):
 
-    if request.GET.get('bid_order') == 'bid_order':
-        return render('mainapp/success.html')
-    else:
-        return redirect('/mainapp/' + str(order.id))
+    if request.method == 'POST':
+        if request.POST['bid_order']:
+            order = Order()
+            bid = Bid()
+            bid.user_bid = request.user  
+            bid.bid_selected = request.POST['bid_selected']
+            bid.save()
+            return render(request, 'mainapp/success.html')
+
+    return render(request, 'mainapp/success.html')
+    
 
     

@@ -25,11 +25,12 @@ def bid(request):
 
     if request.method == 'POST':
         if request.POST['bid_order']:
+            order = Order
             bid = Bid()
             bid.user_bid = request.user
-            bid.bid_selected = request.POST['bid_order']
+            bid.bid_order = request.POST['bid_order']
             bid.save()
-            return render(request, 'mainapp/success.html')
+            return render(request, 'mainapp/success.html', {'bid_order': bid.bid_order})
 
     return render(request, 'mainapp/success.html')
     

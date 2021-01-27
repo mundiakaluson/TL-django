@@ -77,7 +77,7 @@
                                 <input type="submit" name="bid_order" 
                                 value="Bid Order" class="btn btn-sm btn-success"
                                 data-toggle="modal" data-target="#myModal"
-                                onclick="location.href='{% url 'order_details' order.topic %}';" >
+                                onclick="location.href={% url 'order_details' order.topic %}" >
                                 </div>
                             </form>
                                 </div>

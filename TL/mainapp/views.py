@@ -21,16 +21,16 @@ def order_details(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     return render(request, 'mainapp/order_details.html', {'order': order})
 
-def bid(request):
+def bid(request, order_id):
 
     if request.method == 'POST':
         if request.POST['bid_order']:
-            order = Order
+            order = get_object_or_404(Order, pk=order_id)
             bid = Bid()
             bid.user_bid = request.user
-            bid.bid_order = request.POST['bid_order']
+            bid.bid_order = request.POST[order]
             bid.save()
-            return render(request, 'mainapp/success.html', {'bid_order': bid.bid_order})
+            return render(request, 'mainapp/success.html', {'order': order})
 
     return render(request, 'mainapp/success.html')
     

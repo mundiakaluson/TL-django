@@ -91,3 +91,6 @@ class Order(models.Model):
     def __str__(self) -> str:
         return self.topic
 
+    def summary(self):
+        return self.description[:100]
+

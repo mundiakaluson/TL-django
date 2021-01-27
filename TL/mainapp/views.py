@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Order
 
@@ -18,8 +18,15 @@ def orders(reqeust):
     return render(reqeust, 'mainapp/orders.html', {"title": title, "orders": orders})
 
 def order_details(request, order_id):
-
     order = get_object_or_404(Order, pk=order_id)
     return render(request, 'mainapp/order_details.html', {'order': order})
-    
+
+def bid(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+
+    if request.GET.get('bid_order') == 'bid_order':
+        return render('mainapp/success.html')
+    else:
+        return redirect('/mainapp/' + str(order.id))
+
     

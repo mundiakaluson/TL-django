@@ -1,1 +1,91 @@
-{{ order.topic }}
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="container">
+
+    <div class="container-fluid bg-dark text-light rounded">
+        <br>
+        <div class="row">                
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>
+                                    {{ order.topic }}
+                                </h3>
+                                <p class="text-light font-light">
+                                    <p>Description</p>
+                                    <br>
+                                    {{ order.description }}
+                                </p>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4    ">
+                                        <span class="badge badge-secondary">Words: {{ order.words }}</span>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <span class="badge badge-secondary">Writing Level: {{ order.level }}</span>
+                                    </div>
+                                    <div class="col-md">
+                                        <span class="badge badge-secondary">Language: {{ order.language }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="badge badge-danger">Deadline: {{ order.deadline }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="badge badge-light">
+                                    Subject: {{ order.subject }}
+                                </span>
+                                
+                                <br>
+                                <span class="badge badge-light">
+                                    Sources Needed: {{ order.sources }}
+                                </span>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-12">
+
+                                <span class="badge badge-light">
+                                    Writing: Style: {{ order.style }}
+                                </span>
+
+                                <br>
+                                <span class="badge badge-info" >
+                                     Price: {{ order.price }}
+                                </span>
+                                
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="col-4 align-items-end">
+                                <form action="#" method="GET">
+                                    {% csrf_token %}
+                                    <input type="submit" name="bid_order" value="Bid Order" class="btn btn-sm btn-success" >
+                                </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <br>
+    </div>
+    <br>
+</div>
+<br>
+{% endblock content %}
+    

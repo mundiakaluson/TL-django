@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Order
 
@@ -15,8 +15,11 @@ def orders(reqeust):
     #TODO: Render webpage to show orders after designing! DONE!
 
     orders = Order.objects
-
-
     return render(reqeust, 'mainapp/orders.html', {"title": title, "orders": orders})
+
+def order_details(request, order_id):
+
+    order = get_object_or_404(Order, pk=order_id)
+    return render(request, 'mainapp/order_details.html', {'order': order})
     
     

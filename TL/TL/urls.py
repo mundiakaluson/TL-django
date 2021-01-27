@@ -9,4 +9,6 @@ urlpatterns = [
     path('about', views.about, name='about'),
     path('writers/', include('writers.urls'), name='writers'),
     path('orders', views.orders, name='orders'),
+    path('<int:order_id>/', views.order_details, name='order_details')
+
 ]

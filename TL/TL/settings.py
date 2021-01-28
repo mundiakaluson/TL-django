@@ -86,7 +86,7 @@ SUIT_CONFIG = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'TLdb',
+        'NAME': 'TutoringLearnersdb',
         'USER': 'postgres',
         'PASSWORD': 'jack12345',
         'HOST': 'localhost',

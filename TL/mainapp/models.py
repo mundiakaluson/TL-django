@@ -88,7 +88,6 @@ class Order(models.Model):
                                 null=True, 
                                 help_text='Writer to undertake the assignment.')"""
     
-    bid_placed_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self) -> str:
@@ -99,7 +98,10 @@ class Order(models.Model):
 
 class Bid(models.Model):
 
-    bid_order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
+    bid_description = models.TextField(max_length=400, blank=True, null=True)
+    bid_user = models.ForeignKey(User, on_delete=CASCADE, null=True, blank=True)
+
+
 
     """def __str__(self) -> str:
         return self.bid_selected"""

@@ -73,19 +73,23 @@
                             <br>
                             <form action="{% url 'bid' %}" method="POST">
                             {% csrf_token %}
-                            <div class="col-4 align-items-end">
-                                <input type="submit" name="bid_order" 
+                            <div class="col-4">
+                                <textarea rows="3" name="bid_description" class="rounded" placeholder="Please state why this task should be assigned to you."></textarea>
+                                <br>
+                                <input type="hidden" name="order_topic">
+                                <input type="hidden" name="bid_user">
+                                <input type="submit" name="bid_order"
                                 value="Bid Order" class="btn btn-sm btn-success"
                                 data-toggle="modal" data-target="#myModal"
                                 onclick="location.href='{% url 'bid' %}';" >
-                                </div>
+                            </div>
                             </form>
                                 </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr>
+            <br>
         </div>
         <br>
     </div>

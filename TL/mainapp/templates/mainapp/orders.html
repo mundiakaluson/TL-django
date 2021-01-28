@@ -62,12 +62,12 @@
                                 </a>
                                 <br>
                                 <br>
-                            <form action="{% url 'bid' %}" method="POST">
+                            <form action="{% url 'orders' %}" method="POST">
                                     {% csrf_token %}
                                         <input type="submit" name="bid_order" 
                                         value="Bid Order" class="btn btn-sm btn-success"
                                         data-toggle="modal" data-target="#myModal"
-                                        onclick="location.href='{% url 'bid' %}';" >
+                                        onclick="location.href='{% url 'orders' %}';" >
                             </form>
                         </div>
                     </div>

@@ -82,11 +82,14 @@ class Order(models.Model):
 
     price = MoneyField(decimal_places=2, max_digits=19, default_currency='USD', help_text='Total payment of the assignment')
 
-    writer = models.ForeignKey(User, 
+    """writer = models.ForeignKey(User, 
                                 on_delete=CASCADE, 
                                 blank=True, 
                                 null=True, 
-                                help_text='Writer to undertake the assignment.')
+                                help_text='Writer to undertake the assignment.')"""
+    
+    bid_placed_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+
 
     def __str__(self) -> str:
         return self.topic
@@ -96,7 +99,6 @@ class Order(models.Model):
 
 class Bid(models.Model):
 
-    user_bid = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     bid_order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
 
     """def __str__(self) -> str:

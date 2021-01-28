@@ -54,12 +54,21 @@
                             </div>
                             <br>
                             <br>
-                            <div class="col-4 align-items-end">
+                            <div class="col-4 ">
                                 <a onclick="window.location='{% url 'order_details' order.id %}';">
                                     <button type="button" class="btn btn-sm btn-success" >
                                         View Order
                                     </button>
                                 </a>
+                                <br>
+                                <br>
+                            <form action="{% url 'bid' %}" method="POST">
+                                    {% csrf_token %}
+                                        <input type="submit" name="bid_order" 
+                                        value="Bid Order" class="btn btn-sm btn-success"
+                                        data-toggle="modal" data-target="#myModal"
+                                        onclick="location.href='{% url 'bid' %}';" >
+                            </form>
                         </div>
                     </div>
                 </div>

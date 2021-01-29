@@ -5,6 +5,16 @@
 <br>
 
 <div class="container">
+    <div class="container-fluid bg-dark text-light rounded">
+        <br>
+        <h3 class="font-weight-light">
+            Available Orders
+        </h2>
+        <br>
+    </div>
+</div>
+<br>
+<div class="container">
 
     <div class="container-fluid bg-dark text-light rounded">
         <br>
@@ -21,11 +31,9 @@
                                     {{ order.topic }}
                                 </h3>
                                 <p class="text-light font-light">
-                                    <p>Description</p>
-                                    <br>
+                                    <h6>Description</h6>
                                     {{ order.summary }}
                                 </p>
-                                <br>
                                 <div class="row">
                                     <div class="col-md-4    ">
                                         <span class="badge badge-secondary">Words: {{ order.words }}</span>

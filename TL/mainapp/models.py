@@ -100,6 +100,7 @@ class Bid(models.Model):
     order_topic = models.CharField(max_length=4000, null=True, blank=True)
     bid_note = models.TextField(default="")
     bidder = models.CharField(max_length=128, null=True, blank=True)
+    
 
     """def __str__(self) -> str:
         return self.bid_selected"""

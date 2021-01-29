@@ -11,18 +11,17 @@ def about(request):
     return render(request, 'mainapp/about.html', {"title": title})
 
 @login_required
-def orders(reqeust):
+def orders(request):
     #TODO: Render webpage to show orders after designing! DONE!
 
     orders = Order.objects
-    return render(reqeust, 'mainapp/orders.html', {"title": title, "orders": orders})
+    return render(request, 'mainapp/orders.html', {"title": title, "orders": orders})
 
 def order_details(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     return render(request, 'mainapp/order_details.html', {'order': order})
 
 def bid(request):
-
     if request.method == 'POST':
         if request.POST['order_id'] and request.POST['order_topic'] and request.POST['bid_note'] and request.POST['bidder']:
             bid = Bid()
@@ -33,7 +32,7 @@ def bid(request):
             bid.save()
             return render(request, 'mainapp/success.html')
 
-    return render(request, 'mainapp/success.html')
+    return render(request, 'mainapp/orders.html')
     
 
     

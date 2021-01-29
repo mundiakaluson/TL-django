@@ -82,11 +82,13 @@ class Order(models.Model):
 
     price = MoneyField(decimal_places=2, max_digits=19, default_currency='USD', help_text='Total payment of the assignment')
 
-    writer = models.ForeignKey(User, 
+    """writer = models.ForeignKey(User, 
                                 on_delete=CASCADE, 
                                 blank=True, 
                                 null=True, 
-                                help_text='Writer to undertake the assignment.')
+                                help_text='Writer to undertake the assignment.')"""
+    
+
 
     def __str__(self) -> str:
         return self.topic
@@ -100,7 +102,7 @@ class Bid(models.Model):
     order_topic = models.CharField(max_length=4000, null=True, blank=True)
     bid_note = models.TextField(default="")
     bidder = models.CharField(max_length=128, null=True, blank=True)
-    
+
 
     """def __str__(self) -> str:
         return self.bid_selected"""

@@ -33,8 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'djmoney',
-    'writers.apps.WritersConfig',
     'mainapp.apps.MainappConfig',
+    'writers.apps.WritersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'TL.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['TL/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,11 +86,7 @@ SUIT_CONFIG = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-<<<<<<< HEAD
-        'NAME': 'TLDB',
-=======
         'NAME': 'TutoringLearnersdb',
->>>>>>> 1ba393cb26e33683f0aeaca01e79c4ed4c2ee48c
         'USER': 'postgres',
         'PASSWORD': 'jack12345',
         'HOST': 'localhost',

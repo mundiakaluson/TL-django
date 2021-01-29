@@ -98,17 +98,11 @@ class Order(models.Model):
 
 class Bid(models.Model):
 
-<<<<<<< HEAD
     order_id = models.PositiveIntegerField(null=True, blank=True)
     order_topic = models.CharField(max_length=4000, null=True, blank=True)
     bid_note = models.TextField(default="")
     bidder = models.CharField(max_length=128, null=True, blank=True)
-=======
-    bid_description = models.TextField(max_length=400, blank=True, null=True)
-    bid_user = models.ForeignKey(User, on_delete=CASCADE, null=True, blank=True)
 
-
->>>>>>> 1ba393cb26e33683f0aeaca01e79c4ed4c2ee48c
 
     """def __str__(self) -> str:
         return self.bid_selected"""

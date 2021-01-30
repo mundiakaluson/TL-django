@@ -22,6 +22,7 @@ def order_details(request, order_id):
     return render(request, 'mainapp/order_details.html', {'order': order})
 
 def bid(request):
+    
     if request.method == 'POST':
         if request.POST['order_id'] and request.POST['order_topic'] and request.POST['bid_note'] and request.POST['bidder']:
             bid = Bid()

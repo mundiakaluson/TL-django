@@ -31,7 +31,11 @@
                                         {{ info.profession }}
                                     </h6>
                                     <p class="proile-rating">YOUR RANKING ACCORDING TO PREVIOUS PROJECTS: <span> {{ info.ranking }}</span></p>
-                                    <p class="proile-rating">RANKINGS ARE EVALUATED FROM LEVEL 1 - 5.</p>
+                                    <p class="proile-rating">RANKINGS ARE EVALUATED FROM LEVEL 1 - 5. 
+                                        LEVELS ARE STAGES A WRITER GOES THROUGH, STATUS IS THE CURRENT EXPERIENCE OF THE WRITER.
+                                        A WRITER AT LEVEL 4 IN <label style="color: rgb(186, 230, 182);">Beginner</label> STATUS SHOWS THAT THE WRITER WAS IN A HIGHER STAGE BEFORE.
+                                        HOWEVER, DUE TO POSSIBLE MISTAKES, THE STATUS REDUCED FROM LEVEL 5 AND STATUS FROM <label style="color: rgb(50, 120, 201);">Novice</label>.
+                                    </p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile Information</a>
@@ -93,8 +97,71 @@
                                             <div class="col-md-6">
                                                 <label>Your Current Status</label>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p> {{ info.rating }}</p>
+                                            
+                                            {% if info.rating == "Under Investigation" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(243, 98, 98);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating">You are seeing this because 
+                                                        an order is in dispute or a client has filled a 
+                                                        claim agaisnt your work.
+                                                    </p>
+                                                </div>
+                                            {% elif info.rating == "Beginner" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(186, 230, 182);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating">You have passed the Probation Evaluation.
+                                                        You are account status only 
+                                                        allows you to recieve a limited amount of orders.
+                                                    </p>
+                                                </div>
+                                            {% elif info.rating == "Novice" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(50, 120, 201);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating">You are a Novice and orders
+                                                        that you recieve are relatively significant as compared to
+                                                        writers under probation and beginners.
+                                                    </p>
+                                                </div>
+                                            {% elif info.rating == "Expert" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(22, 228, 108);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating">Your Expert account allows you to have
+                                                        the highest privileges among all writers in lower categories.
+                                                        You will be first priority as orders come in. Please note that 
+                                                        level can be lowered at anytime based on your overall performance.
+                                                    </p>
+                                                </div>
+                                                {% elif info.rating == "Probation" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(228, 65, 228);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating"> Your account is in the lowest level
+                                                        . You need to pass the probation evaluation before you become a beginner.
+                                                    </p>
+                                                </div>
+                                            {% endif %}
+                                            <div class="col-md-12">
+                                                <p class="proile-rating">Writers' Statuses: 
+                                                    <br><br>
+                                                    <label style="color: rgb(228, 65, 228);">Probation</label>
+                                                    <br>
+                                                    <label style="color: rgb(22, 228, 108);">Beginner</label>
+                                                    <br>
+                                                    <label style="color: rgb(50, 120, 201);">Novice</label>
+                                                    <br>
+                                                    <label style="color: rgb(186, 230, 182);">Expert</label>
+                                                    <br>
+                                                    <label style="color: rgb(243, 98, 98);">Under Investigation</label>
+                                                </p>
                                             </div>
                                             <div class="col-md-12">
                                                 <p class="proile-rating">PLEASE NOTE THAT TUTORING LEARNERS IS A PRIVATE SERVICE 

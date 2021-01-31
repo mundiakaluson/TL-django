@@ -35,14 +35,11 @@ def bid(request):
 
     return render(request, 'mainapp/orders.html')
 
-def assigned(request):
+def assigned(request, order_id):
 
-    assigned_order = Assign()
-    assigned_order.writer_assigned = request.POST['writer_assigned']
-    assigned_order.order_assigned = request.POST['order_assinged']
-    assigned_order.save()
-
-    return render(request, 'mainapp/assigned.html')   
+    assigned_order = Assign.objects
+    my_order = get_object_or_404(Order, pk=order_id)
+    return render(request, 'mainapp/assigned.html', {'assigned_order': assigned_order, 'my_order': my_order})   
     
 
     

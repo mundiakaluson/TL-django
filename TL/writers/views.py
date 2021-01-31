@@ -60,6 +60,11 @@ def username(request, username):
     username = get_object_or_404(User, pk=username)
     return render(request, 'writers/login.html', {'username': username})
 
+def profile(request):
+
+    users = User.objects
+    return render(request, 'writers/profile.html', {'users': users})
+
 def logout(request):
         auth.logout(request)
         return redirect('home')

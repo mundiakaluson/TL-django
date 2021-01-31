@@ -36,31 +36,26 @@
         <br>
         <div class="row">
             {% if orders %}
+            
+            {% for order in orders.all %}                
                 <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>
-                                                                           
-                                    {{ orders.topic }}
-
-                                    
-                                    {% if orders.writer == user %}
-                                        ASSIGNED
-                                    {% endif %}
-                                        
+                                <h3>                                        
+                                    {{ order.topic }}       
                                 </h3>
                                 <p class="text-light font-light">
                                     <h6>Description</h6>
-                                    {{ orders.summary }}
+                                    {{ order.summary }}
                                 </p>
                                 <div class="row">
                                     <div class="col-md-4    ">
-                                        <span class="badge badge-secondary">Words: {{ orders.words }}</span>
+                                        <span class="badge badge-secondary">Words: {{ order.words }}</span>
                                     </div>
                                     <div class="col-md-5">
-                                        <span class="badge badge-secondary">Writing Level: {{ orders.level }}</span>
+                                        <span class="badge badge-secondary">Writing Level: {{ order.level }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +64,7 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="badge badge-danger">Deadline: {{ orders.deadline }}</span>
+                                <span class="badge badge-danger">Deadline: {{ order.deadline }}</span>
                             </div>
                         </div>
                         <div class="row">
@@ -77,9 +72,15 @@
                             <br>
                             <div class="col-sm-12">
                                 <span class="badge badge-info" >
-                                     Price: {{ orders.price }}
+                                     Price: {{ order.price }}
                                 </span>
-                                
+                            </div>
+                            <div class="col-sm-12">
+                                <span class="badge badge-success" >
+                                     {% if order.writer == user %}
+                                         Order Status: Assigned
+                                     {% endif %}               
+                                </span>
                             </div>
                             <br>
                             <br>
@@ -97,6 +98,7 @@
         </div>
         <br>
     </div>
+    {% endfor %}
     {% else %}
     <div class="col-md-12">
         <div class="row">

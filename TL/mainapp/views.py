@@ -39,7 +39,7 @@ def bid(request):
 
 def assigned(request):
     try:
-        orders = Order.objects.get(writer=request.user)
+        orders = Order.objects
         if orders:
             return render(request, 'mainapp/assigned.html', {'orders': orders})   
     except ObjectDoesNotExist:

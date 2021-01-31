@@ -8,6 +8,8 @@
 {% block content %}
 
 <div class="container emp-profile bg-dark text-light">
+
+            
             
             <div class="bg-dark text-light rounded">
                 <a href="javascript:history.go(-1)">
@@ -16,12 +18,9 @@
             </div>
             <br>
 
-            
-            {% for user in users.all %}  
-            {% for user_info in users_info.all %}                              
             <h3 class="font-weight-light"> {{ user|capfirst }}'s Profile</h3>
             <br>
-            <form method="post">
+            <form method="GET">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="profile-head">
@@ -29,9 +28,9 @@
                                         {{ user.first_name }} {{ user.last_name }}
                                     </h5>
                                     <h6>
-                                        {{ user_info.profession }}
+                                        {{ info.profession }}
                                     </h6>
-                                    <p class="proile-rating">YOUR RANKING ACCORDING TO PREVIOUS PROJECTS: <span> {{ user_info.ranking }}</span></p>
+                                    <p class="proile-rating">YOUR RANKING ACCORDING TO PREVIOUS PROJECTS: <span> {{ info.ranking }}</span></p>
                                     <p class="proile-rating">RANKINGS ARE EVALUATED FROM LEVEL 1 - 5.</p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -77,7 +76,7 @@
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ user_info.phone }}</p>
+                                                <p> {{ info.phone }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -85,7 +84,7 @@
                                                 <label>Profession</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ user_info.profession }}</p>
+                                                <p> {{ info.profession }}</p>
                                             </div>
                                         </div>
                             </div>
@@ -95,16 +94,21 @@
                                                 <label>Your Current Status</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ user_info.rating }}</p>
+                                                <p> {{ info.rating }}</p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="proile-rating">PLEASE NOTE THAT TUTORING LEARNERS IS A PRIVATE SERVICE 
+                                                    THAT GIVES FIRST PRIORITY TO GIVING WRITERS THE BEST OVERALL EXPERIENCE.
+                                                    THIS MEANS THAT THE QUALITY OF YOUR WORK ACCOMPANIED BY YOUR <b>'RATING'</b> AND <b>'CURRENT STATUS'</b> WILL
+                                                    DETERMINE THE AMOUNT OF 'Available Orders' YOU WILL SEE.
+                                                </p>
                                             </div>
                                         </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form> 
-            {% endfor %} 
-            {% endfor %}         
+            </form>                                        
         </div>
 
 {% endblock content %}

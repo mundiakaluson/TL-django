@@ -32,7 +32,7 @@ class Profile(models.Model):
         ('Novice', 'Novice'),
         ('Expert', 'Expert')
     )
-    user = models.OneToOneField(User, on_delete=CASCADE, related_name='user_profile')
+    user = models.OneToOneField(User, on_delete=CASCADE, related_name='user_profile', null=True)
     phone = models.CharField(max_length=64, blank=True, null=True)
     profession = models.CharField(max_length=124, choices=PROFESSION, default='Writer', help_text='Type of Employee')
     ranking = models.CharField(max_length=128, choices=RANKING, help_text='Employees are ranked from level 1-5 according to their expertise.')

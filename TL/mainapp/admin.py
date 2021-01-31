@@ -1,6 +1,5 @@
 from django.contrib import admin
 from . import models
-from django.contrib.auth.models import User
 class OrderAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'topic', 'style', 'words', 'level', 'deadline', 'price')

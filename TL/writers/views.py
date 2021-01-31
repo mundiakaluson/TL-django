@@ -67,9 +67,10 @@ def username(request, username):
     return render(request, 'writers/login.html', {'username': username})
 
 def profile(request):
-    users_info = Profile.objects
+    
     users = User.objects
-    return render(request, 'writers/profile.html', {'users': users, 'users_info': users_info})
+    info = Profile.objects.get(user=request.user)
+    return render(request, 'writers/profile.html', {'users': users, 'info': info})
 
 def logout(request):
         auth.logout(request)

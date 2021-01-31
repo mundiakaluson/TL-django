@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Bid, Order, Assign
+from django.core.exceptions import ObjectDoesNotExist
 
 title = "Tutoring Learners"
 
@@ -35,11 +37,19 @@ def bid(request):
 
     return render(request, 'mainapp/orders.html')
 
-def assigned(request, order_id):
+def assigned(request):
+    try:
+        orders = Order.objects.get(writer=request.user)
+        if orders:
+            return render(request, 'mainapp/assigned.html', {'orders': orders})   
+    except ObjectDoesNotExist:
+        return render(request, 'mainapp/assigned.html')
 
-    assigned_order = Assign.objects
-    my_order = get_object_or_404(Order, pk=order_id)
-    return render(request, 'mainapp/assigned.html', {'assigned_order': assigned_order, 'my_order': my_order})   
+"""def assigned_details(request, order_id):
+    assigned_details = get_object_or_404(Order, pk=order_id)
+
+    return render(request, 'mainapp/assigned.html', {'assigned_details': assigned_details})"""
+
     
 
     

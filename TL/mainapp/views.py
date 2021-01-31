@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Bid, Order
+from .models import Bid, Order, Assign
 
 title = "Tutoring Learners"
 
@@ -34,6 +34,15 @@ def bid(request):
             return render(request, 'mainapp/success.html')
 
     return render(request, 'mainapp/orders.html')
+
+def assigned(request):
+
+    assigned_order = Assign()
+    assigned_order.writer_assigned = request.POST['writer_assigned']
+    assigned_order.order_assigned = request.POST['order_assinged']
+    assigned_order.save()
+
+    return render(request, 'mainapp/assigned.html')   
     
 
     

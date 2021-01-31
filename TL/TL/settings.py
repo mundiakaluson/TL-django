@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+AUTH_PROFILE_MODULE = 'writers.Profile'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

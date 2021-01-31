@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
+from .models import Profile
 
 title = "Tutoring Learners"
 
@@ -22,9 +23,14 @@ def register(request):
                     request.POST['username'], password=request.POST['password1'], 
                     email=request.POST['email'], first_name=request.POST['first_name'], 
                     last_name=request.POST['second_name'])
-
                 user.is_active = False
+                user_info = Profile()
+                user_info.phone = request.POST['phone']
+                user_info.profession = request.POST['profession']
+                user_info.rating = request.POST['rating']
+                user_info.ranking = request.POST['ranking']
                 user.save()
+                user_info.save()
                 auth.login(request, user)
                 return redirect('home')
         else:
@@ -61,9 +67,9 @@ def username(request, username):
     return render(request, 'writers/login.html', {'username': username})
 
 def profile(request):
-
+    users_info = Profile.objects
     users = User.objects
-    return render(request, 'writers/profile.html', {'users': users})
+    return render(request, 'writers/profile.html', {'users': users, 'users_info': users_info})
 
 def logout(request):
         auth.logout(request)

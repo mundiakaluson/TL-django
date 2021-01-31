@@ -17,7 +17,8 @@
             <br>
 
             
-            {% for user in users.all %}                
+            {% for user in users.all %}  
+            {% for user_info in users_info.all %}                              
             <h3 class="font-weight-light"> {{ user|capfirst }}'s Profile</h3>
             <br>
             <form method="post">
@@ -28,15 +29,16 @@
                                         {{ user.first_name }} {{ user.last_name }}
                                     </h5>
                                     <h6>
-                                        Web Developer and Designer
+                                        {{ user_info.profession }}
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                    <p class="proile-rating">YOUR RANKING ACCORDING TO PREVIOUS PROJECTS: <span> {{ user_info.ranking }}</span></p>
+                                    <p class="proile-rating">RANKINGS ARE EVALUATED FROM LEVEL 1 - 5.</p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile Information</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Account Status</a>
                                 </li>
                             </ul>
                         </div>
@@ -48,10 +50,10 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>User Id</label>
+                                                <label>User Id (You use this to Login)</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti123</p>
+                                                <p> {{ user }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -59,7 +61,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                                <p>{{ user.first_name }} {{ user.last_name }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -67,7 +69,7 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
+                                                <p> {{ user.email }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -75,7 +77,7 @@
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                <p> {{ user_info.phone }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -83,63 +85,26 @@
                                                 <label>Profession</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
+                                                <p> {{ user_info.profession }}</p>
                                             </div>
                                         </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Experience</label>
+                                                <label>Your Current Status</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Expert</p>
+                                                <p> {{ user_info.rating }}</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>10$/hr</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Total Projects</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </form> 
-            {% endfor %}          
+            {% endfor %} 
+            {% endfor %}         
         </div>
 
 {% endblock content %}

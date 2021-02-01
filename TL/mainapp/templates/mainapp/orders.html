@@ -104,7 +104,7 @@
             {% endif %}
             {% endfor %}
 
-
+            {% if order.writer == user %}
             {% block not_available %}
 
             <div class="col-md-12">
@@ -126,6 +126,7 @@
                 <hr>
             </div>
             {% endblock not_available %}
+            {% endif %}
         </div>
     </div>
     <br>

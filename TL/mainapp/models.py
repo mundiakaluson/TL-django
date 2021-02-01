@@ -103,8 +103,8 @@ class Bid(models.Model):
 
 class Assign(models.Model):
 
-    writer_assigned = models.OneToOneField(User, on_delete=CASCADE)
-    order_assigned = models.OneToOneField(Order, on_delete=CASCADE)
+    writer_assigned = models.OneToOneField(User, on_delete=CASCADE, related_name='writer_topic')
+    order_assigned = models.OneToOneField(Order, on_delete=CASCADE ,related_name='order_assigned')
 
     def __unicode__(self):
         return self.writer_assigned

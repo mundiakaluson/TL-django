@@ -39,18 +39,9 @@ def bid(request):
     return render(request, 'mainapp/orders.html')
 
 def assigned(request):
-    try:
-        orders = Order.objects
-        if orders:
-            return render(request, 'mainapp/assigned.html', {'orders': orders})   
-    except ObjectDoesNotExist:
-        return render(request, 'mainapp/assigned.html')
+        writer_orders = Assign.objects
+        return render(request, 'mainapp/assigned.html', {'writer_orders': writer_orders, 'orders': orders})   
 
-"""def assigned_details(request, order_id):
+def assigned_details(request, order_id):
     assigned_details = get_object_or_404(Order, pk=order_id)
-
-    return render(request, 'mainapp/assigned.html', {'assigned_details': assigned_details})"""
-
-    
-
-    
+    return render(request, 'mainapp/order_details.html', {'assigned_details': assigned_details})

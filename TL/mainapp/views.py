@@ -17,7 +17,8 @@ def orders(request):
     #TODO: Render webpage to show orders after designing! DONE!
 
     orders = Order.objects
-    return render(request, 'mainapp/orders.html', {"title": title, "orders": orders})
+    order_check = Order.objects.filter(writer=request.user)
+    return render(request, 'mainapp/orders.html', {"title": title, "orders": orders, "order_check": order_check})
 
 def order_details(request, order_id):
     order = get_object_or_404(Order, pk=order_id)

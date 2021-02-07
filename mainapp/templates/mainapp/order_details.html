@@ -93,12 +93,24 @@
                             <br>
                             <form action="{% url 'bid' %}" method="POST" name="bid_form">
                             {% csrf_token %}
+<<<<<<< HEAD
                             <div class="col-4 align-items-end">
                                 <input type="hidden" name="order_id" value="{{ order.id }}">
                                 <input type="hidden" name="bidder" value="{{ user|capfirst }}">
                                 <input type="hidden" name="order_topic" value="{{ order.topic }}">
                                 <textarea placeholder="Please indicate why this order should be assigned to you." name="bid_note" cols="30" rows="3" class="rounded text-light bg-dark"></textarea>
                                 <input type="submit" value="Bid Order" class="btn btn-sm btn-success" name="bid_btn">
+=======
+                            <div class="col-4">
+                                <textarea rows="3" name="bid_description" class="rounded" placeholder="Please state why this task should be assigned to you."></textarea>
+                                <br>
+                                <input type="hidden" name="order_topic">
+                                <input type="hidden" name="bid_user">
+                                <input type="submit" name="bid_order"
+                                value="Bid Order" class="btn btn-sm btn-success"
+                                data-toggle="modal" data-target="#myModal"
+                                onclick="location.href='{% url 'bid' %}';" >
+>>>>>>> 1ba393cb26e33683f0aeaca01e79c4ed4c2ee48c
                             </div>
                             </form>
                                 </div>
@@ -106,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            <br>
         </div>
         <br>
     </div>

@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+{% block content %}
+
+<div class="container emp-profile bg-dark text-light">
+
+            
+            
+            <div class="bg-dark text-light rounded">
+                <a href="javascript:history.go(-1)">
+                <input type="button" class="btn btn-light" value="Go Back">
+                </a>
+            </div>
+            <br>
+
+            <h3 class="font-weight-light"> {{ user|capfirst }}'s Profile</h3>
+            <br>
+            <form method="GET">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        {{ user.first_name }} {{ user.last_name }}
+                                    </h5>
+                                    <h6>
+                                        {{ info.profession }}
+                                    </h6>
+                                    <p class="proile-rating">YOUR RANKING ACCORDING TO PREVIOUS PROJECTS: <span> {{ info.ranking }}</span></p>
+                                    <p class="proile-rating">RANKINGS ARE EVALUATED FROM LEVEL 1 - 5. 
+                                        LEVELS ARE STAGES A WRITER GOES THROUGH, STATUS IS THE CURRENT EXPERIENCE OF THE WRITER.
+                                        A WRITER AT LEVEL 4 IN <label style="color: rgb(186, 230, 182);">Beginner</label> STATUS SHOWS THAT THE WRITER WAS IN A HIGHER STAGE BEFORE.
+                                        HOWEVER, DUE TO POSSIBLE MISTAKES, THE STATUS REDUCED FROM LEVEL 5 AND STATUS FROM <label style="color: rgb(50, 120, 201);">Novice</label>.
+                                    </p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Account Status</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id (You use this to Login)</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> {{ user }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.first_name }} {{ user.last_name }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> {{ user.email }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> {{ info.phone }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Profession</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> {{ info.profession }}</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Your Current Status</label>
+                                            </div>
+                                            
+                                            {% if info.rating == "Under Investigation" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(243, 98, 98);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating">You are seeing this because 
+                                                        an order is in dispute or a client has filled a 
+                                                        claim agaisnt your work.
+                                                    </p>
+                                                </div>
+                                            {% elif info.rating == "Beginner" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(186, 230, 182);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating">You have passed the Probation Evaluation.
+                                                        You are account status only 
+                                                        allows you to recieve a limited amount of orders.
+                                                    </p>
+                                                </div>
+                                            {% elif info.rating == "Novice" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(50, 120, 201);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating">You are a Novice and orders
+                                                        that you recieve are relatively significant as compared to
+                                                        writers under probation and beginners.
+                                                    </p>
+                                                </div>
+                                            {% elif info.rating == "Expert" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(22, 228, 108);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating">Your Expert account allows you to have
+                                                        the highest privileges among all writers in lower categories.
+                                                        You will be first priority as orders come in. Please note that 
+                                                        level can be lowered at anytime based on your overall performance.
+                                                    </p>
+                                                </div>
+                                                {% elif info.rating == "Probation" %}
+                                                <div class="col-md-6">
+                                                    <p style="color: rgb(228, 65, 228);"> {{ info.rating }}</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p class="proile-rating"> Your account is in the lowest level
+                                                        . You need to pass the probation evaluation before you become a beginner.
+                                                    </p>
+                                                </div>
+                                            {% endif %}
+                                            <div class="col-md-12">
+                                                <p class="proile-rating">Writers' Statuses: 
+                                                    <br><br>
+                                                    <label style="color: rgb(228, 65, 228);">Probation</label>
+                                                    <br>
+                                                    <label style="color: rgb(22, 228, 108);">Beginner</label>
+                                                    <br>
+                                                    <label style="color: rgb(50, 120, 201);">Novice</label>
+                                                    <br>
+                                                    <label style="color: rgb(186, 230, 182);">Expert</label>
+                                                    <br>
+                                                    <label style="color: rgb(243, 98, 98);">Under Investigation</label>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="proile-rating">PLEASE NOTE THAT TUTORING LEARNERS IS A PRIVATE SERVICE 
+                                                    THAT GIVES FIRST PRIORITY TO GIVING WRITERS THE BEST OVERALL EXPERIENCE.
+                                                    THIS MEANS THAT THE QUALITY OF YOUR WORK ACCOMPANIED BY YOUR <b>'RATING'</b> AND <b>'CURRENT STATUS'</b> WILL
+                                                    DETERMINE THE AMOUNT OF 'Available Orders' YOU WILL SEE.
+                                                </p>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>                                        
+        </div>
+
+{% endblock content %}

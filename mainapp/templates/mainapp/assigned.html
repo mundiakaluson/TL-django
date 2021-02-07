@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load tz %}
+
+{% block content %}
+
+<br>
+
+<div class="container">
+    <div class="container-fluid bg-dark text-light rounded d-flex flex-row">
+        <br>
+        <div class="p-2">
+        <h4 class="font-weight-light">
+            Assigned Orders |
+        </h4>
+        </div>
+        <div class="p-2">
+            <h4 class="font-weight-light">
+                Time:
+                {% timezone "Africa/Nairobi" %}
+                {% now "M. j, Y, g:i a" %}
+                {% endtimezone %} |
+            </h4>
+        </div>
+        <div class="p-2">
+            <a href="{% url 'profile' %}">
+            <input type="button" class="btn btn-light" value=" {{ user|capfirst }}'s Profile">
+            </a>
+        </div>
+        <div class="p-2">
+        <a href="javascript:history.go(-1)">
+        <input type="button" class="btn btn-light" value="Available Orders">
+        </a>
+    </div>
+        <br>
+    </div>
+</div>
+<br>
+<div class="container">
+
+    <div class="container-fluid bg-dark text-light rounded">
+        <br>
+        <div class="row">            
+            
+            {% for order in writer_orders.all %}                
+                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>                                        
+                                    {{ order.order_assigned }}   
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <br>
+                            <br>
+                            <div class="col-4 align-items-end">
+                                <a onclick="window.location='{% url 'order_details' order.id %}';">
+                                    <button type="button" class="btn btn-sm btn-success" >
+                                        View Order
+                                    </button>
+                                </a>
+                        </div> 
+                    </div>    
+                </div>
+            </div>
+            <hr>
+        </div>
+        <br>
+    </div>
+<br>
+</div>
+    {% endfor %}
+    <br>
+</div>
+<br>
+{% endblock content %}
+    

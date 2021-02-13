@@ -8,15 +8,11 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('id', )
     list_per_pages = 20
 
-<<<<<<< HEAD
 class BidAdmin(admin.ModelAdmin):
 
     list_display = ('order_id', 'order_topic', 'bid_note', 'bidder')
     readonly_fields = ['order_id', 'order_topic', 'bid_note', 'bidder']
 
-
-=======
->>>>>>> 1ba393cb26e33683f0aeaca01e79c4ed4c2ee48c
 admin.site.register(models.Order, OrderAdmin)
 admin.site.site_header = 'Tutoring Learners Terminal'
 admin.site.index_title = 'TL Admin Panel'

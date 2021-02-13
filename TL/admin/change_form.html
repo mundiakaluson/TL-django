@@ -1,0 +1,13 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+    {{ block.super }}
+    <form action="" method="POST">
+    {% csrf_token %}
+    <div class="submit-row">
+            <input type="hidden" name="writer_assigned " value=" {{ user }} ">
+            <input type="hidden" name="order_assinged" value=" {{ order.topic }}">
+            <input type="submit" value="Assign Order" name="assign">
+    </div>
+    </form>
+{% endblock %}

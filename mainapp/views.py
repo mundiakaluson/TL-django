@@ -15,11 +15,7 @@ def about(request):
 @login_required
 def orders(request):
     #TODO: Render webpage to show orders after designing! DONE!
-    if request.method == 'POST':
-        order_bid = Order()
-        order_bid.bid_placed_by = request.POST.get('bid_placed_by')
-        order_bid.save()
-        return render(request, 'mainapp/orders.html', {"title": title, "orders": orders})
+    orders = Order.objects.all()
     return render(request, 'mainapp/orders.html', {"title": title, "orders": orders})
 def order_details(request, order_id):
     order = get_object_or_404(Order, pk=order_id)

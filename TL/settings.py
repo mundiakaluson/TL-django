@@ -26,7 +26,7 @@ SECRET_KEY = '!0(4p0y%q80_m^l1jsg^%#!$lx@wd9z&%^-4+onom_&0v0211@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhhost', '0df652beeeef.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhhost', 'bf71369a9126.ngrok.io']
 
 
 # Application definition
@@ -134,7 +134,7 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '/static')
+    os.path.join(BASE_DIR, 'TL/static')
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

@@ -15,8 +15,14 @@ def about(request):
 @login_required
 def orders(request):
     #TODO: Render webpage to show orders after designing! DONE!
+<<<<<<< HEAD:mainapp/views.py
     orders = Order.objects.all()
     return render(request, 'mainapp/orders.html', {"title": title, "orders": orders})
+=======
+    orders = Order.objects
+    return render(request, 'mainapp/orders.html', {"orders": orders})
+
+>>>>>>> main:TL/mainapp/views.py
 def order_details(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     return render(request, 'mainapp/order_details.html', {'order': order})
@@ -24,6 +30,7 @@ def order_details(request, order_id):
 def bid(request):
     
     if request.method == 'POST':
+<<<<<<< HEAD:mainapp/views.py
         if request.POST['order_id'] and request.POST['order_topic'] and request.POST['bid_note'] and request.POST['bidder']:
             bid = Bid()
             bid.order_id = request.POST['order_id']  
@@ -44,3 +51,14 @@ def assigned(request):
 def assigned_details(request, order_id):
     assigned_details = get_object_or_404(Order, pk=order_id)
     return render(request, 'mainapp/order_details.html', {'assigned_details': assigned_details})
+=======
+        if request.POST['bid_order'] and request.POST['bid_placed_by']:
+            bid = Bid()
+            bid.user_bid = request.user
+            bid.bid_placed_by = request.POST['bid_placed_by']
+            bid.save()
+            return render(request, 'mainapp/success.html')
+
+    return render(request, 'mainapp/success.html')
+  
+>>>>>>> main:TL/mainapp/views.py

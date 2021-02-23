@@ -103,10 +103,6 @@ class Bid(models.Model):
     order_topic = models.CharField(max_length=4000, null=True, blank=True)
     bid_note = models.TextField(default="")
     bidder = models.CharField(max_length=128, null=True, blank=True)
-<<<<<<< HEAD:mainapp/models.py
-=======
-
->>>>>>> origin/main:TL/mainapp/models.py
 
 class Assign(models.Model):
 
